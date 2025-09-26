@@ -11,9 +11,6 @@ describe('POM IMPLEMENTATION', () => {
         login.clicklogin();
         login.usernamelogin(datalogin[0].username);
         login.passwordlogin(datalogin[0].password);
-        cy.on('window:alert', (text) => {
-            expect(text).to.contains('Login successful');
-        });
         login.submitLoginForm();
         login.verifyloginsuccess();
     });

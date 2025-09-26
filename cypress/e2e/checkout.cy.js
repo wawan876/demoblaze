@@ -13,15 +13,14 @@ describe('Checkout Process', () => {
         login.clicklogin();
         login.usernamelogin(datalogin[0].username);
         login.passwordlogin(datalogin[0].password);
-        datacheckout.checkoutProduct('Product 1');
-        cy.on('window:alert', (text) => {
-            expect(text).to.contains('Login successful');
-        });
         login.submitLoginForm();
-
-        datacheckout.checkoutProduct('Product 1');
+        login.verifyloginsuccess();
+        datacheckout.checkoutProduct();
         datacheckout.proceedToCheckout();
-        datacheckout.fillShippingDetails('John Doe', 'USA', 'New York', '4111111111111111', '12', '2025');
+        datacheckout.fillShippingDetails('wawan', 'USA', 'New York', '4111111111111111', '12', '2025');
         datacheckout.confirmOrder();
+         cy.on('window:alert', (text) => {
+            expect(text).to.contains('Thank you for your purchase!');
+        });
     });
 });

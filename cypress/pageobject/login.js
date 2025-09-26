@@ -1,27 +1,39 @@
 const login = {
 
+    locators: {
+        loginPage: 'https://demoblaze.com/',
+        loginButton: "//a[.='Log in']",
+        usernameInput: "//input[@id='loginusername']",
+        passwordInput: "//input[@id='loginpassword']",
+        submitButton: "//button[.='Log in']",
+        LogoutButton: "#logout2"
+    },
+
     visitLoginPage() {
-        cy.visit('https://demoblaze.com/')
+        cy.visit(this.locators.loginPage)
     },
 
     clicklogin(){
-        cy.xpath("//a[.='Log in']").click()
+        cy.xpath(this.locators.loginButton).click({force:true})
     },
 
     usernamelogin(username) {
-        cy.xpath("//input[@id='loginusername']").wait(1000).type(username)
+        cy.xpath(this.locators.usernameInput).wait(1000).type(username)
     },
 
     passwordlogin(password) {
-        cy.xpath("//input[@id='loginpassword']").wait(1000).type(password)
+        cy.xpath(this.locators.passwordInput).wait(1000).type(password)
     },
 
     submitLoginForm() {
-        cy.xpath("//button[.='Log in']").click()
+        cy.xpath(this.locators.submitButton).click()
     },
 
     verifyloginsuccess(){
-        cy.url().should('include','/index.html')
+        cy.get('#logout2');
+    },
+    clickLogout(){
+        cy.get(this.locators.LogoutButton).click({force:true})
     }
 }
 

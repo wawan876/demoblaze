@@ -1,10 +1,12 @@
 import createaccounttest from '../pageobject/createaccounttest';
 import createdata from '../fixtures/createdata.json';
-
+// let uniqueUsername;
 
 describe('POM IMPLEMENTATION', () => {
     beforeEach(() => {
+        // uniqueUsername = `wawan_${Date.now()}`;
         cy.visit('https://demoblaze.com/')
+
     });
 
     it('username valid & password valid', () => {
